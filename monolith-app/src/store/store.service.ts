@@ -16,7 +16,9 @@ export class StoreService {
   ) {}
 
   async create(createStoreDto: CreateStoreDto) {
+    console.log(createStoreDto);
     const store = this.storeRepository.create(createStoreDto);
+    console.log(store);
     const createdStore = await this.storeRepository.save(store);
     
     const stockRepository = this.storeStockRepository.create({ store: createdStore._id, products: [] });
