@@ -21,7 +21,7 @@ export class StoreService {
     console.log(store);
     const createdStore = await this.storeRepository.save(store);
     
-    const stockRepository = this.storeStockRepository.create({ store: createdStore._id, products: [] });
+    const stockRepository = this.storeStockRepository.create({ store: createdStore._id, products: [], entityVersion: 1 });
     this.storeStockRepository.save(stockRepository);
 
     return createdStore;

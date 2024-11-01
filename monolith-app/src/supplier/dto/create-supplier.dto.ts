@@ -9,4 +9,7 @@ export class CreateSupplierDto {
 
     @ApiProperty()
     email: string
+    
+    @ApiProperty()
+    entityVersion: number;
 }
