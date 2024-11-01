@@ -17,7 +17,7 @@ import { SupplierModule } from './supplier/supplier.module';
     ProductModule, 
     StoreModule, 
     StoreStockModule, 
-    SupplierModule
+    SupplierModule, 
   ],
   controllers: [],
   providers: [],

@@ -5,11 +5,13 @@ import { StoreStock } from './entities/store-stock.entity';
 import { Repository } from 'typeorm';
 import { ObjectId } from 'mongodb';
 import { StoreNotFoundException } from 'src/Exceptions/store-not-found.exception';
+import { Product } from 'src/product/entities/product.entity';
 
 @Injectable()
 export class StoreStockService {
   constructor(
     @InjectRepository(StoreStock) private storeStockRepository: Repository<StoreStock>,
+    @InjectRepository(Product) private productRepository: Repository<Product>,
   ) {}
 
   async findOne(storeId: string) {
@@ -21,8 +23,16 @@ export class StoreStockService {
     if (!storeStock) {
       throw new StoreNotFoundException(storeId);
     }
+    
+    // Map the productQuantity to the product and quantity
+    return storeStock.products.map(productQuantity => {
 
-    return storeStock;
+      const product = this.productRepository.findOne({
+        where: { _id : new ObjectId(productQuantity.getProductId()) }
+      });
+
+      return { product, quantity: productQuantity.getQuantity() };
+    });
   }
 
   async update(storeId: string, updateStoreStockDto: UpdateStoreStockDto) {
