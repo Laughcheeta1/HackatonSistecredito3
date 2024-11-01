@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongodb';
-import { Entity, Column, ObjectIdColumn } from 'typeorm';
+import { Entity, Column, ObjectIdColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class Supplier {
@@ -14,4 +14,13 @@ export class Supplier {
 
     @Column()
     email: string;
+
+    @CreateDateColumn()
+    createdAt: Date;
+
+    @UpdateDateColumn()
+    updatedAt: Date;
+
+    @Column()
+    entityVersion: number;
 }

@@ -26,14 +26,13 @@ export class StoreStockService {
     }
     
     // Map the productQuantity to the product and quantity
-    return storeStock.products.map(productQuantity => {
-
-      const product = this.productRepository.findOne({
+    return Promise.all(storeStock.products.map(async productQuantity => {
+      const product = await this.productRepository.findOne({
         where: { _id : new ObjectId(productQuantity.productId) }
       });
 
       return { product, quantity: productQuantity.quantity };
-    });
+    }));
   }
 
   async update(storeId: string, updateStoreStockDto: UpdateStoreStockDto) {

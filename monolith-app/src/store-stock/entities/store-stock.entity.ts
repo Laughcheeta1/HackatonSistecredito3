@@ -1,4 +1,4 @@
-import { Entity, Column, ObjectIdColumn } from 'typeorm';
+import { Entity, Column, ObjectIdColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { ObjectId } from 'mongodb';
 import { ProductQuantity } from 'src/store-stock/entities/product-quantity';
 
@@ -12,4 +12,13 @@ export class StoreStock {
 
     @Column()
     products: ProductQuantity[];
+
+    @CreateDateColumn()
+    createdAt: Date;
+
+    @UpdateDateColumn()
+    updatedAt: Date;
+
+    @Column()
+    entityVersion: number;
 }
