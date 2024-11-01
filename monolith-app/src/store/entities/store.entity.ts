@@ -12,6 +12,9 @@ export class Store {
     @Column()
     direction: string;
 
+    @Column()
+    name: string;
+
     @CreateDateColumn()
     createdAt: Date;
 

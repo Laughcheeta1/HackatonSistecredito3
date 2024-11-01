@@ -3,4 +3,5 @@ import { CreateStoreDto } from './create-store.dto';
 
 export class UpdateStoreDto extends PartialType(CreateStoreDto) {
     direction: string;
+    name: string;
 }
