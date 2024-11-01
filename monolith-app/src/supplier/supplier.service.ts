@@ -4,7 +4,7 @@ import { UpdateSupplierDto } from './dto/update-supplier.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Supplier } from './entities/supplier.entity';
-import { SupplierNotFoundException } from 'src/exceptions/supplier-not-found.exception';
+import { SupplierNotFoundException } from './../Exceptions/supplier-not-found.exception';
 import { ObjectId } from 'mongodb';
 
 
