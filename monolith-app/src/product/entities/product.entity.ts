@@ -16,17 +16,8 @@ export class Product {
     @Column()
     price: number;
 
-    // @Column()
-    // category: string;
-
-    // @Column()
-    // brand: string;
-
     @Column()
     suppliers: string[];
-
-    // @Column()
-    // imageUrl: string;
 
     @CreateDateColumn()
     createdAt: Date;
