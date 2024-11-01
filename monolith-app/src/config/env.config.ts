@@ -5,13 +5,11 @@ import * as path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 // Export environment variables as simple variables
-export const PORT = process.env.PORT;
-export const DB_NAME = process.env.DB_NAME;
-export const DB_USER = process.env.DB_USER;
-export const CLUSTER_NAME = process.env.CLUSTER_NAME;
-export const CLUSTER_URL = process.env.CLUSTER_URL;
-export const DB_PASS = process.env.DB_PASS;
-export const DB_RETRY_WRITES = process.env.DB_RETRY_WRITES;
-export const DB_W = process.env.DB_W;
-export const JWT_SECRET = process.env.JWT_SECRET;
-export const APP_NAME = process.env.APP_NAME;
+export const PORT = 8080;
+export const DB_NAME = "TerceraHackatonSisteCredito";
+export const DB_USER = "santiagoyepesmesa0224";
+export const DB_PASS = "MWnAJfgc87smUvIe";
+export const CLUSTER_URL = "Cluster0.hxewa.mongodb.net";
+export const DB_RETRY_WRITES = "true";
+export const DB_W = "majority";
+export const APP_NAME = "NSM_FOR_THE_WIN";
