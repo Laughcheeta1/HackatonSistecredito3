@@ -2,18 +2,23 @@ import { Module } from '@nestjs/common';
 // import { AppController } from './app.controller';
 // import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
-import { InventoryModule } from './inventory/inventory.module';
 import { ProductModule } from './product/product.module';
-import { MongoConfigModule } from './config/mongo.config';
+import { TypeOrmConfig } from './config/typeorm.config';
+import { StoreModule } from './store/store.module';
+import { StoreStockModule } from './store-stock/store-stock.module';
+import { SupplierModule } from './supplier/supplier.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // Makes the ConfigModule available globally
     }),
-    MongoConfigModule,
-    InventoryModule, 
-    ProductModule],
+    TypeOrmConfig,
+    ProductModule, 
+    StoreModule, 
+    StoreStockModule, 
+    SupplierModule
+  ],
   controllers: [],
   providers: [],
 })

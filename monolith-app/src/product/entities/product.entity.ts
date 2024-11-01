@@ -1,9 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { ObjectId } from 'mongodb';
+import { StoreStock } from 'src/store-stock/entities/store-stock.entity';
+import { Entity, ObjectIdColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class Product {
-    @PrimaryGeneratedColumn()
-    id: number;
+    @ObjectIdColumn()
+    _id: ObjectId;
 
     @Column()
     name: string;
@@ -14,40 +16,22 @@ export class Product {
     @Column()
     price: number;
 
-    @Column()
-    category: string;
+    // @Column()
+    // category: string;
+
+    // @Column()
+    // brand: string;
 
     @Column()
-    brand: string;
+    suppliers: string[];
 
-    @Column()
-    weight: number;
+    // @Column()
+    // imageUrl: string;
 
-    @Column()
-    unit: string;
-
-    @Column()
-    stock: number;
-
-    @Column()
-    sku: string;
-
-    @Column()
-    barcode: string;
-
-    @Column()
-    expirationDate: Date;
-
-    @Column()
-    supplier: string;
-
-    @Column()
-    imageUrl: string;
-
-    @Column()
+    @CreateDateColumn()
     createdAt: Date;
 
-    @Column()
+    @UpdateDateColumn()
     updatedAt: Date;
 
     @Column()
