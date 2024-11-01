@@ -14,3 +14,4 @@ export const DB_PASS = process.env.DB_PASS;
 export const DB_RETRY_WRITES = process.env.DB_RETRY_WRITES;
 export const DB_W = process.env.DB_W;
 export const JWT_SECRET = process.env.JWT_SECRET;
+export const APP_NAME = process.env.APP_NAME;
