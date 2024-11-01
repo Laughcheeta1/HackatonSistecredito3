@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 import { ObjectId } from 'mongodb';
 import { StoreNotFoundException } from 'src/Exceptions/store-not-found.exception';
 import { Product } from 'src/product/entities/product.entity';
+import { ProductQuantity } from './entities/product-quantity';
 
 @Injectable()
 export class StoreStockService {
@@ -28,10 +29,10 @@ export class StoreStockService {
     return storeStock.products.map(productQuantity => {
 
       const product = this.productRepository.findOne({
-        where: { _id : new ObjectId(productQuantity.getProductId()) }
+        where: { _id : new ObjectId(productQuantity.productId) }
       });
 
-      return { product, quantity: productQuantity.getQuantity() };
+      return { product, quantity: productQuantity.quantity };
     });
   }
 
@@ -41,6 +42,24 @@ export class StoreStockService {
       where: { store: objectId },
     });
 
-    storeStock.products.find(product => product.getProductId() === updateStoreStockDto.productId).setQuantity(updateStoreStockDto.quantity);
+    let product = storeStock.products.find(product => product.productId === updateStoreStockDto.productId);
+    if (product)  // The product is already registered in the store's stock
+    {
+      product.quantity = updateStoreStockDto.quantity;
+    }
+    else
+    {
+      storeStock.products.push(new ProductQuantity(updateStoreStockDto.productId, updateStoreStockDto.quantity));
+    }
+
+    await this.storeStockRepository.save(storeStock);
+  }
+
+  async removeAllProduct(productId: string) {
+    const stores = await this.storeStockRepository.find();
+
+    stores.forEach(store => {
+      store.products = store.products.filter(product => product.productId !== productId);
+    });
   }
 }

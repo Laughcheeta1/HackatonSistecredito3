@@ -10,6 +10,6 @@ export class StoreStock {
     @Column()
     store: ObjectId;
 
-    @Column(type => ProductQuantity)
+    @Column()
     products: ProductQuantity[];
 }
