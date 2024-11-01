@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param } from '@nestjs/common';
 import { StoreStockService } from './store-stock.service';
 import { UpdateStoreStockDto } from './dto/update-store-stock.dto';
 
-@Controller('store-stock')
+@Controller('store/stock/')
 export class StoreStockController {
   constructor(private readonly storeStockService: StoreStockService) {}
 
