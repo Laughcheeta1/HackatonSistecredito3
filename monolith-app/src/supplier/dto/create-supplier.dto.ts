@@ -1,1 +1,12 @@
-export class CreateSupplierDto {}
+import { ApiProperty } from "@nestjs/swagger";
+
+export class CreateSupplierDto {
+    @ApiProperty()
+    name: string;
+
+    @ApiProperty()
+    direction: string;
+
+    @ApiProperty()
+    email: string
+}
